@@ -3,76 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水果系列遊戲</title>
+    <title>🍎 水果遊戲大本營</title>
     <style>
-        body { 
-            font-family: "Microsoft JhengHei", sans-serif; 
-            background-color: #fff5f5; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-        }
-
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #fff5f5; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center; max-width: 500px; width: 100%; }
+        h1 { color: #d35400; margin-bottom: 25px; }
+        
+        /* 網格設定：手機一列，電腦兩列 */
         .game-grid { 
             display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* 2x2 矩陣排列 */
-            gap: 20px; 
-            width: 90%; 
-            max-width: 600px; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
         }
-
+        
         .btn { 
             display: flex; 
-            flex-direction: column;
-            align-items: center;
+            align-items: center; 
             justify-content: center;
-            padding: 30px 10px; 
+            padding: 20px 10px; 
+            background: #e67e22; 
             color: white; 
             text-decoration: none; 
-            border-radius: 25px; 
+            border-radius: 15px; 
+            font-size: 1.1em; 
             font-weight: bold; 
-            font-size: 1.3em;
-            transition: all 0.3s ease;
-            background: #e67e22; /* 統一用橘色系 */
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            min-height: 60px;
         }
 
-        /* 滑鼠移上去的效果 */
-        .btn:hover { 
-            transform: translateY(-5px); 
-            background: #d35400; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        /* 不同顏色的按鈕區分 */
+        .btn-1 { background: #e67e22; } /* 橘色 */
+        .btn-2 { background: #f1c40f; } /* 黃色 */
+        .btn-3 { background: #2ecc71; } /* 綠色 */
+        .btn-4 { background: #3498db; } /* 藍色 */
+        .btn-5 { background: #9b59b6; } /* 紫色 */
+
+        .btn:hover { transform: scale(1.05); filter: brightness(0.9); }
+        
+        /* 最後一個按鈕佔滿整行（如果是單數） */
+        .btn:last-child:nth-child(odd) {
+            grid-column: span 2;
         }
 
-        .icon { font-size: 2em; margin-bottom: 10px; }
-
-        /* 手機直向時改為一排一個 */
-        @media (max-width: 480px) {
+        @media (max-width: 400px) {
             .game-grid { grid-template-columns: 1fr; }
+            .btn:last-child:nth-child(odd) { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>🍎 水果遊戲選單</h1>
+        
+        <div class="game-grid">
+            <a class="btn btn-1" href="分類水果闖兩關.html">🎯 水果配對 A</a>
+            <a class="btn btn-2" href="分類水果闖兩關(有音效).html">🔊 水果配對 B</a>
+            <a class="btn btn-3" href="水果遊戲3.html">🍓 水果找找看</a>
+            <a class="btn btn-4" href="水果遊戲4.html">🍍 水果切切樂</a>
+            <a class="btn btn-5" href="水果遊戲5.html">🍉 水果大挑戰</a>
+        </div>
 
-    <div class="game-grid">
-        <a class="btn" href="分類水果闖兩關.html">
-            <span class="icon">🍎</span> 水果配對
-        </a>
-
-        <a class="btn" href="水果切切樂.html">
-            <span class="icon">🔪</span> 水果切切樂
-        </a>
-
-        <a class="btn" href="水果抓抓樂.html">
-            <span class="icon">🧺</span> 水果抓抓樂
-        </a>
-
-        <a class="btn" href="水果認知練習.html">
-            <span class="icon">🧐</span> 水果識別
-        </a>
     </div>
-
 </body>
 </html>
