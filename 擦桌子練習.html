@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧽 擦桌子練習</title>
+    <style>
+        /* 返回大廳按鈕：固定在左上角 */
+        .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            z-index: 9999;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .back-btn:hover { background-color: #000; }
+
+        body { font-family: sans-serif; text-align: center; background-color: #eef; margin: 0; padding-top: 60px; }
+        .game-area { border: 5px solid #333; display: inline-block; background: white; cursor: crosshair; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">🏠 返回大廳</a>
+
+    <h1>🧽 請把桌子擦乾淨</h1>
+    
+    <div class="game-area">
+        <canvas id="cleanCanvas" width="600" height="400"></canvas>
+    </div>
+
+    <script>
+        // 簡單的擦桌子程式碼範例
+        const canvas = document.getElementById('cleanCanvas');
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#888'; // 髒汙顏色
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        let isDrawing = false;
+        canvas.onmousedown = () => isDrawing = true;
+        canvas.onmouseup = () => isDrawing = false;
+        canvas.onmousemove = (e) => {
+            if (isDrawing) {
+                const rect = canvas.getBoundingClientRect();
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(e.clientX - rect.left, e.clientY - rect.top, 30, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        };
+    </script>
+</body>
+</html>
