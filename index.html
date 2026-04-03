@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>遊戲進入點</title>
+    <title>水果系列遊戲</title>
     <style>
-        /* 讓背景保持乾淨，內容居中 */
         body { 
-            font-family: sans-serif; 
+            font-family: "Microsoft JhengHei", sans-serif; 
             background-color: #fff5f5; 
             display: flex; 
             justify-content: center; 
@@ -15,36 +14,63 @@
             min-height: 100vh; 
             margin: 0; 
         }
-        
-        /* 移除原本的容器背景與陰影，讓畫面不像「大廳」 */
-        .direct-link { 
-            text-align: center; 
+
+        .game-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); /* 2x2 矩陣排列 */
+            gap: 20px; 
+            width: 90%; 
+            max-width: 600px; 
         }
 
         .btn { 
-            display: inline-block; 
-            padding: 25px 60px; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 10px; 
             color: white; 
             text-decoration: none; 
-            border-radius: 20px; 
+            border-radius: 25px; 
             font-weight: bold; 
-            font-size: 1.5em; /* 稍微放大按鈕 */
-            transition: transform 0.2s, background 0.2s;
-            background: #e67e22;
-            box-shadow: 0 8px 15px rgba(230, 126, 34, 0.3);
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+            background: #e67e22; /* 統一用橘色系 */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
+        /* 滑鼠移上去的效果 */
         .btn:hover { 
-            transform: scale(1.1); 
-            background: #d35400;
+            transform: translateY(-5px); 
+            background: #d35400; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .icon { font-size: 2em; margin-bottom: 10px; }
+
+        /* 手機直向時改為一排一個 */
+        @media (max-width: 480px) {
+            .game-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="direct-link">
+    <div class="game-grid">
         <a class="btn" href="分類水果闖兩關.html">
-            🎯 點擊開始水果配對遊戲
+            <span class="icon">🍎</span> 水果配對
+        </a>
+
+        <a class="btn" href="水果切切樂.html">
+            <span class="icon">🔪</span> 水果切切樂
+        </a>
+
+        <a class="btn" href="水果抓抓樂.html">
+            <span class="icon">🧺</span> 水果抓抓樂
+        </a>
+
+        <a class="btn" href="水果認知練習.html">
+            <span class="icon">🧐</span> 水果識別
         </a>
     </div>
 
